@@ -1,0 +1,309 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+enum EstadoSeguimiento {
+  RECIBIDO
+  EN_REVISION
+  ASIGNADO
+  EN_PROCESO
+  RESUELTO
+  CERRADO
+  RECHAZADO
+}
+
+type Evidencia {
+  id_evidencia: ID!
+  imagen: String!
+  observaciones: String!
+  detEvidencias: [DetEvidencia!]
+}
+
+type DetEvidencia {
+  id_det_evidencia: ID!
+  denuncia_id: Int!
+  evidencia_id: Int!
+  descripcion: String
+  denuncia: Denuncia
+  evidencia: Evidencia
+}
+
+type HistorialEstado {
+  id_historial: ID!
+  fecha: Date!
+  observaciones: String!
+  estado: EstadoSeguimiento!
+  ciudadano_id: Int
+  denuncia_id: Int
+  servidor_publico_id: Int
+  ciudadano: Ciudadano
+  denuncia: Denuncia
+  servidor_publico: ServidorPublico
+}
+
+type Denuncia {
+  id_denuncia: ID!
+  ciudadano_id: Int!
+  titulo: String!
+  fecha_denuncia: Date!
+  categoria: String!
+  prioridad: String!
+  ciudadano: Ciudadano
+  detEvidencias: [DetEvidencia!]
+}
+
+type TipoUsuario {
+  id_tipo_usuario: ID!
+  nombre: String!
+  descripcion: String
+  us_ciudadano: Boolean
+  us_servidor: Boolean
+  us_administrador: Boolean
+}
+
+type Usuario {
+  id_usuario: ID!
+  username: String!
+  password_hash: String!
+  id_tipo_usuario: Int!
+  empleado_id: Int
+  ciudadano_id: Int
+  avatar_url: String!
+  ultimo_acceso: Date!
+  activo: Boolean!
+  tipoUsuario: TipoUsuario
+}
+
+type Ciudadano {
+  id_ciudadano: ID!
+  nombre: String!
+  apellido_p: String!
+  apellido_m: String!
+  correo: String!
+  usuario_id: Int
+  usuario: Usuario
+  telefono: String!
+  fecha_registro: Date!
+  denuncias: [Denuncia!]
+}
+
+type ServidorPublico {
+  id_servidor: ID!
+  nombre: String!
+  apellido_p: String!
+  apellido_m: String!
+  email_personal: String!
+  cargo: String!
+  telefono: String!
+  dependencia: String
+  usuario_id: Int
+  usuario: Usuario
+  fecha_ingreso: Date!
+  activo: Boolean!
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+type Query {
+  """API GraphQL FallaCero - Sistema de denuncias"""
+  fallaCeroVersion: String!
+  ciudadanos: [Ciudadano!]!
+  ciudadanosP(page: Int = 1, limit: Int = 10): [Ciudadano!]!
+  ciudadano(id: Int!): Ciudadano!
+  usuarios: [Usuario!]!
+  usuariosP(page: Int = 1, limit: Int = 10): [Usuario!]!
+  login(input: UpdateUsuarioInput!): Usuario
+  usuario(id: Int!): Usuario!
+  tiposUsuarios: [TipoUsuario!]!
+  tiposUsuariosP(page: Int = 1, limit: Int = 10): [TipoUsuario!]!
+  tipoUsuario(id: Int!): TipoUsuario!
+  denuncias: [Denuncia!]!
+  denunciasP(page: Int = 1, limit: Int = 10): [Denuncia!]!
+  denuncia(id: Int!): Denuncia!
+  evidencias: [Evidencia!]!
+  evidenciasP(page: Int = 1, limit: Int = 10): [Evidencia!]!
+  evidencia(id: Int!): Evidencia!
+  detEvidencias: [DetEvidencia!]!
+  detEvidenciasP(page: Int = 1, limit: Int = 10): [DetEvidencia!]!
+  detEvidencia(id: Int!): DetEvidencia!
+  historialesEstados: [HistorialEstado!]!
+  historialesEstadosP(page: Int = 1, limit: Int = 10): [HistorialEstado!]!
+  historialEstado(id: Int!): HistorialEstado!
+  servidoresPublicos: [ServidorPublico!]!
+  servidoresPublicosP(page: Int = 1, limit: Int = 10): [ServidorPublico!]!
+  servidorPublico(id: Int!): ServidorPublico!
+}
+
+input UpdateUsuarioInput {
+  username: String
+  password_hash: String
+  id_tipo_usuario: Int
+  empleado_id: Int
+  alumno_id: Int
+  tutor_id: Int
+  avatar_url: String
+  ultimo_acceso: Date
+  activo: Boolean
+  id_usuario: ID
+}
+
+type Mutation {
+  createCiudadano(input: CreateCiudadanoInput!): Ciudadano!
+  updateCiudadano(id: Int!, input: UpdateCiudadanoInput!): Ciudadano!
+  removeCiudadano(id: Int!): Boolean!
+  createUsuario(input: CreateUsuarioInput!): Usuario!
+  updateUsuario(id: Int!, input: UpdateUsuarioInput!): Usuario!
+  removeUsuario(id: Int!): Boolean!
+  createTipoUsuario(input: CreateTipoUsuarioInput!): TipoUsuario!
+  updateTipoUsuario(id: Int!, input: UpdateTipoUsuarioInput!): TipoUsuario!
+  removeTipoUsuario(id: Int!): Boolean!
+  createDenuncia(input: CreateDenunciaInput!): Denuncia!
+  updateDenuncia(id: Int!, input: UpdateDenunciaInput!): Denuncia!
+  removeDenuncia(id: Int!): Boolean!
+  createEvidencia(input: CreateEvidenciaInput!): Evidencia!
+  updateEvidencia(id: Int!, input: UpdateEvidenciaInput!): Evidencia!
+  removeEvidencia(id: Int!): Boolean!
+  createDetEvidencia(input: CreateDetEvidenciaInput!): DetEvidencia!
+  updateDetEvidencia(id: Int!, input: UpdateDetEvidenciaInput!): DetEvidencia!
+  removeDetEvidencia(id: Int!): Boolean!
+  createHistorialEstado(input: CreateHistorialEstadoInput!): HistorialEstado!
+  updateHistorialEstado(id: Int!, input: UpdateHistorialEstadoInput!): HistorialEstado!
+  removeHistorialEstado(id: Int!): Boolean!
+  createServidorPublico(input: CreateServidorPublicoInput!): ServidorPublico!
+  updateServidorPublico(id: Int!, input: UpdateServidorPublicoInput!): ServidorPublico!
+  removeServidorPublico(id: Int!): Boolean!
+}
+
+input CreateCiudadanoInput {
+  nombre: String!
+  apellido_p: String!
+  apellido_m: String!
+  correo: String!
+  usuario_id: Int
+  telefono: String!
+  fecha_registro: Date!
+}
+
+input UpdateCiudadanoInput {
+  nombre: String
+  apellido_p: String
+  apellido_m: String
+  correo: String
+  usuario_id: Int
+  telefono: String
+  fecha_registro: Date
+  id_ciudadano: ID!
+}
+
+input CreateUsuarioInput {
+  username: String!
+  password_hash: String!
+  id_tipo_usuario: Int!
+  empleado_id: Int
+  alumno_id: Int
+  tutor_id: Int
+  avatar_url: String!
+  ultimo_acceso: Date!
+  activo: Boolean!
+}
+
+input CreateTipoUsuarioInput {
+  nombre: String!
+  descripcion: String!
+  us_ciudadano: Boolean
+  us_servidor: Boolean
+  us_administrador: Boolean
+}
+
+input UpdateTipoUsuarioInput {
+  nombre: String
+  descripcion: String
+  us_ciudadano: Boolean
+  us_servidor: Boolean
+  us_administrador: Boolean
+  id_tipo_usuario: ID!
+}
+
+input CreateDenunciaInput {
+  ciudadano_id: Int!
+  titulo: String!
+  fecha_denuncia: Date!
+  categoria: String!
+  prioridad: String!
+}
+
+input UpdateDenunciaInput {
+  ciudadano_id: Int
+  titulo: String
+  fecha_denuncia: Date
+  categoria: String
+  prioridad: String
+  id_denuncia: ID!
+}
+
+input CreateEvidenciaInput {
+  imagen: String!
+  observaciones: String!
+}
+
+input UpdateEvidenciaInput {
+  imagen: String
+  observaciones: String
+  id_evidencia: ID!
+}
+
+input CreateDetEvidenciaInput {
+  denuncia_id: Int!
+  evidencia_id: Int!
+}
+
+input UpdateDetEvidenciaInput {
+  denuncia_id: Int
+  evidencia_id: Int
+  id_det_evidencia: ID!
+}
+
+/* Seguimiento inputs removed */
+
+input CreateHistorialEstadoInput {
+  fecha: Date!
+  observaciones: String!
+  # seguimiento_id removed
+}
+
+input UpdateHistorialEstadoInput {
+  fecha: Date
+  observaciones: String
+  # seguimiento_id removed
+  id_historial: ID!
+}
+
+input CreateServidorPublicoInput {
+  nombre: String!
+  apellido_p: String!
+  apellido_m: String!
+  email_personal: String!
+  cargo: String!
+  telefono: String!
+  dependencia: String
+  fecha_ingreso: Date!
+  activo: Boolean!
+  usuario_id: Int
+}
+
+input UpdateServidorPublicoInput {
+  nombre: String
+  apellido_p: String
+  apellido_m: String
+  email_personal: String
+  cargo: String
+  telefono: String
+  dependencia: String
+  fecha_ingreso: Date
+  activo: Boolean
+  usuario_id: Int
+  id_servidor: ID!
+}

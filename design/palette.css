@@ -1,0 +1,119 @@
+/* Shared palette for web and app */
+
+:root {
+  /* Palette - light */
+  --palette-background: 0 0% 100%;
+  --palette-foreground: 0 0% 3.9%;
+  --palette-card: 0 0% 100%;
+  --palette-card-foreground: 0 0% 3.9%;
+  --palette-primary: 0 0% 9%;
+  --palette-primary-foreground: 0 0% 98%;
+  --palette-secondary: 0 0% 96.1%;
+  --palette-secondary-foreground: 0 0% 9%;
+  --palette-muted: 0 0% 96.1%;
+  --palette-muted-foreground: 0 0% 45.1%;
+  --palette-accent: 0 0% 96.1%;
+  --palette-accent-foreground: 0 0% 9%;
+  --palette-destructive: 0 84.2% 60.2%;
+  --palette-border: 0 0% 89.8%;
+  --palette-input: 0 0% 89.8%;
+  --palette-ring: 0 0% 63%;
+  --palette-chart-1: 12 76% 61%;
+  --palette-chart-2: 173 58% 39%;
+  --palette-chart-3: 197 37% 24%;
+  --palette-chart-4: 43 74% 66%;
+  --palette-chart-5: 27 87% 67%;
+
+  /* App-friendly aliases (raw values, used with hsl(var(--...)) in Tailwind/nativewind) */
+  --background: var(--palette-background);
+  --foreground: var(--palette-foreground);
+  --card: var(--palette-card);
+  --card-foreground: var(--palette-card-foreground);
+  --primary: var(--palette-primary);
+  --primary-foreground: var(--palette-primary-foreground);
+  --secondary: var(--palette-secondary);
+  --secondary-foreground: var(--palette-secondary-foreground);
+  --muted: var(--palette-muted);
+  --muted-foreground: var(--palette-muted-foreground);
+  --accent: var(--palette-accent);
+  --accent-foreground: var(--palette-accent-foreground);
+  --destructive: var(--palette-destructive);
+  --border: var(--palette-border);
+  --input: var(--palette-input);
+  --ring: var(--palette-ring);
+  --radius: 0.625rem;
+  --card-radius: 14px;
+  --chart-1: var(--palette-chart-1);
+  --chart-2: var(--palette-chart-2);
+  --chart-3: var(--palette-chart-3);
+  --chart-4: var(--palette-chart-4);
+  --chart-5: var(--palette-chart-5);
+
+  /* Web legacy aliases (CSS color values) */
+  --bg: hsl(var(--palette-background));
+  --surface: hsl(var(--palette-card));
+  --muted-bg: hsl(var(--palette-muted));
+  --accent-color: hsl(var(--palette-accent));
+  --foreground-color: hsl(var(--palette-foreground));
+  --primary-foreground-color: hsl(var(--palette-primary-foreground));
+  --card-shadow: 0 8px 24px hsl(var(--palette-background) / 0.6);
+}
+
+.dark:root {
+  /* Palette - dark */
+  --palette-background: 0 0% 3.9%;
+  --palette-foreground: 0 0% 98%;
+  --palette-card: 0 0% 3.9%;
+  --palette-card-foreground: 0 0% 98%;
+  --palette-primary: 0 0% 98%;
+  --palette-primary-foreground: 0 0% 9%;
+  --palette-secondary: 0 0% 14.9%;
+  --palette-secondary-foreground: 0 0% 98%;
+  --palette-muted: 0 0% 14.9%;
+  --palette-muted-foreground: 0 0% 63.9%;
+  --palette-accent: 0 0% 14.9%;
+  --palette-accent-foreground: 0 0% 98%;
+  --palette-destructive: 0 70.9% 59.4%;
+  --palette-border: 0 0% 14.9%;
+  --palette-input: 0 0% 14.9%;
+  --palette-ring: 300 0% 45%;
+  --palette-chart-1: 220 70% 50%;
+  --palette-chart-2: 160 60% 45%;
+  --palette-chart-3: 30 80% 55%;
+  --palette-chart-4: 280 65% 60%;
+  --palette-chart-5: 340 75% 55%;
+
+  /* App-friendly aliases (raw values) */
+  --background: var(--palette-background);
+  --foreground: var(--palette-foreground);
+  --card: var(--palette-card);
+  --card-foreground: var(--palette-card-foreground);
+  --primary: var(--palette-primary);
+  --primary-foreground: var(--palette-primary-foreground);
+  --secondary: var(--palette-secondary);
+  --secondary-foreground: var(--palette-secondary-foreground);
+  --muted: var(--palette-muted);
+  --muted-foreground: var(--palette-muted-foreground);
+  --accent: var(--palette-accent);
+  --accent-foreground: var(--palette-accent-foreground);
+  --destructive: var(--palette-destructive);
+  --border: var(--palette-border);
+  --input: var(--palette-input);
+  --ring: var(--palette-ring);
+  --radius: 0.625rem;
+  --card-radius: 14px;
+  --chart-1: var(--palette-chart-1);
+  --chart-2: var(--palette-chart-2);
+  --chart-3: var(--palette-chart-3);
+  --chart-4: var(--palette-chart-4);
+  --chart-5: var(--palette-chart-5);
+
+  /* Web legacy aliases (CSS color values) */
+  --bg: hsl(var(--palette-background));
+  --surface: hsl(var(--palette-card));
+  --muted-bg: hsl(var(--palette-muted));
+  --accent-color: hsl(var(--palette-accent));
+  --foreground-color: hsl(var(--palette-foreground));
+  --primary-foreground-color: hsl(var(--palette-primary-foreground));
+  --card-shadow: 0 8px 24px hsl(var(--palette-background) / 0.6);
+}
