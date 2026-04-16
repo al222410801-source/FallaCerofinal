@@ -9,3 +9,4 @@ npm create vite
 https://dbdiagram.io/d/Sistema-Escolar-698e39c8bd82f5fce2934e4e
 "# FallaCerofinal"  
 "# FALLAMAIN" 
+"# FALLAMAIN" 
