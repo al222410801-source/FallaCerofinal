@@ -130,30 +130,38 @@ type Query {
   fallaCeroVersion: String!
   ciudadanos: [Ciudadano!]!
   ciudadanosP(page: Int = 1, limit: Int = 10): [Ciudadano!]!
+  ciudadanosCount: Float!
   ciudadano(id: Int!): Ciudadano!
   usuarios: [Usuario!]!
   usuariosP(page: Int = 1, limit: Int = 10): [Usuario!]!
+  usuariosCount: Float!
   login(input: UpdateUsuarioInput!): Usuario
   usuario(id: Int!): Usuario!
   tiposUsuarios: [TipoUsuario!]!
   tiposUsuariosP(page: Int = 1, limit: Int = 10): [TipoUsuario!]!
+  tiposUsuariosCount: Float!
   tipoUsuario(id: Int!): TipoUsuario!
   denuncias: [Denuncia!]!
   denunciasP(page: Int = 1, limit: Int = 10, q: String): [Denuncia!]!
+  denunciasCount(q: String): Float!
   denuncia(id: Int!): Denuncia!
   denunciasStats: DenunciasStats!
   denunciasPrediction(meses: Int = 8, factorS: Float = 0.1): DenunciasPrediction!
   evidencias: [Evidencia!]!
   evidenciasP(page: Int = 1, limit: Int = 10): [Evidencia!]!
+  evidenciasCount: Float!
   evidencia(id: Int!): Evidencia!
   detEvidencias: [DetEvidencia!]!
   detEvidenciasP(page: Int = 1, limit: Int = 10): [DetEvidencia!]!
+  detEvidenciasCount: Float!
   detEvidencia(id: Int!): DetEvidencia!
   historialesEstados: [HistorialEstado!]!
   historialesEstadosP(page: Int = 1, limit: Int = 10): [HistorialEstado!]!
+  historialesEstadosCount: Float!
   historialEstado(id: Int!): HistorialEstado!
   servidoresPublicos: [ServidorPublico!]!
   servidoresPublicosP(page: Int = 1, limit: Int = 10): [ServidorPublico!]!
+  servidoresPublicosCount: Float!
   servidorPublico(id: Int!): ServidorPublico!
 }
 

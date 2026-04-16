@@ -30,6 +30,12 @@ export class TipoUsuarioService {
     });
   }
 
+  async count(): Promise<number> {
+    const totalRow: Array<{count: string}> = await this.repository.query(`SELECT COUNT(*)::text as count FROM tipo_usuario`);
+    const total = totalRow && totalRow[0] ? Number(totalRow[0].count) : 0;
+    return total;
+  }
+
   async findOne(id_tipo_usuario: number): Promise<TipoUsuario> {
     return await this.repository.findOneBy({id_tipo_usuario});
   }

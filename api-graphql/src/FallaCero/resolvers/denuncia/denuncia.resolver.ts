@@ -25,6 +25,11 @@ export class DenunciaResolver {
     return this.service.findAllPaginate(page, limit, q);
   }
 
+  @Query(() => Number, {name: 'denunciasCount'})
+  denunciasCount(@Args('q', {type: () => String, nullable: true}) q?: string) {
+    return this.service.count(q);
+  }
+
   @Query(() => Denuncia, {name: 'denuncia'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

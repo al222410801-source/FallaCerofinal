@@ -21,6 +21,11 @@ export class HistorialEstadoResolver {
     return this.service.findAllPaginate(page, limit);
   }
 
+  @Query(() => Number, {name: 'historialesEstadosCount'})
+  historialesEstadosCount() {
+    return this.service.count();
+  }
+
   @Query(() => HistorialEstado, {name: 'historialEstado'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

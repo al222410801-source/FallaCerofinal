@@ -39,6 +39,17 @@ export class DenunciaService {
     return await qb.getMany();
   }
 
+  async count(q?: string): Promise<number> {
+    let qb = this.repository.createQueryBuilder('d').select('COUNT(*)::text', 'count');
+    if (q && q.trim().length > 0) {
+      const qLike = `%${q}%`;
+      qb = qb.where('d.titulo ILIKE :q OR CAST(d.id_denuncia AS TEXT) ILIKE :q', {q: qLike});
+    }
+    const rows: Array<{count: string}> = await qb.getRawMany();
+    const total = rows && rows[0] ? Number((rows[0] as any).count) : 0;
+    return total;
+  }
+
   async findOne(id_denuncia: number): Promise<Denuncia> {
     return await this.repository.findOne({where: {id_denuncia}, relations: ['ciudadano', 'detEvidencias']});
   }

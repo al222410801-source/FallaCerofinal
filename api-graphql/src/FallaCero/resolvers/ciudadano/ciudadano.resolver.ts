@@ -21,6 +21,11 @@ export class CiudadanoResolver {
     return this.service.findAllPaginate(page, limit);
   }
 
+  @Query(() => Number, {name: 'ciudadanosCount'})
+  ciudadanosCount() {
+    return this.service.count();
+  }
+
   @Query(() => Ciudadano, {name: 'ciudadano'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

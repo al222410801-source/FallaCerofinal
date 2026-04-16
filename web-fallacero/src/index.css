@@ -1,22 +1,22 @@
-@import "../../design/palette.css";
-
-/* Web-specific CSS variables (accent-2 used for charts/buttons gradient) */
+/* Web-specific CSS variables (moved from palette.css) */
 :root {
-  --accent: hsl(var(--palette-accent));
-  --accent-foreground: hsl(var(--palette-accent-foreground));
-  /* Accent-2: orange for web dashboard charts (light mode) */
-  --accent-2: hsl(24 100% 50%);
-  /* Chart background and grid for better contrast (light mode) */
-  --chart-bg: hsl(var(--palette-background) / 0.03);
-  --chart-grid: hsl(var(--palette-foreground) / 0.06);
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #06b6d4;
+  --accent: #fbd5b5;
+  --accent-2: #f97316; /* orange for charts */
+  --chart-bg: rgba(15,23,42,0.03);
+  --chart-grid: rgba(15,23,42,0.06);
 }
 
 .dark:root {
-  /* Slightly lighter orange in dark mode for contrast */
-  --accent-2: hsl(24 100% 62%);
-  /* Chart background and grid for better contrast (dark mode) */
-  --chart-bg: hsl(var(--palette-card) / 0.06);
-  --chart-grid: hsl(var(--palette-foreground) / 0.12);
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #06b6d4;
+  --accent: #fbd5b5;
+  --accent-2: #f97316;
+  --chart-bg: rgba(3,7,18,0.06);
+  --chart-grid: rgba(255,255,255,0.12);
 }
 
 html,

@@ -30,6 +30,12 @@ export class DetEvidenciaService {
       relations: ['denuncia', 'evidencia'],
     });
   }
+  
+  async count(): Promise<number> {
+    const totalRow: Array<{count: string}> = await this.repository.query(`SELECT COUNT(*)::text as count FROM det_evidencias`);
+    const total = totalRow && totalRow[0] ? Number(totalRow[0].count) : 0;
+    return total;
+  }
 
   async findOne(id_det_evidencia: number): Promise<DetEvidencia> {
     return await this.repository.findOne({where: {id_det_evidencia}, relations: ['denuncia', 'evidencia']});

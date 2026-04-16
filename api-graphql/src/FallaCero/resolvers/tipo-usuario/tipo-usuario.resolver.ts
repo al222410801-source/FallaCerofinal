@@ -21,6 +21,11 @@ export class TipoUsuarioResolver {
     return this.service.findAllPaginate(page, limit);
   }
 
+  @Query(() => Number, {name: 'tiposUsuariosCount'})
+  tiposUsuariosCount() {
+    return this.service.count();
+  }
+
   @Query(() => TipoUsuario, {name: 'tipoUsuario'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

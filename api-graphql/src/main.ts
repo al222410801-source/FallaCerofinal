@@ -13,7 +13,9 @@ const capabibara = async () => {
 
   app.use(urlencoded({limit: '100mb', extended: true}));
 
-  await app.listen(3000);
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+  console.log(`Starting Nest app - effective PORT=${port}`);
+  await app.listen(port);
 }
 
 capabibara();

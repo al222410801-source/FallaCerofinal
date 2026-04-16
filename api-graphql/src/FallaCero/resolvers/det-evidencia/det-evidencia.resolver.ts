@@ -21,6 +21,11 @@ export class DetEvidenciaResolver {
     return this.service.findAllPaginate(page, limit);
   }
 
+  @Query(() => Number, {name: 'detEvidenciasCount'})
+  detEvidenciasCount() {
+    return this.service.count();
+  }
+
   @Query(() => DetEvidencia, {name: 'detEvidencia'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

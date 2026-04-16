@@ -31,6 +31,12 @@ export class ServidorPublicoService {
     });
   }
 
+  async count(): Promise<number> {
+    const totalRow: Array<{count: string}> = await this.repository.query(`SELECT COUNT(*)::text as count FROM servidores_publicos`);
+    const total = totalRow && totalRow[0] ? Number(totalRow[0].count) : 0;
+    return total;
+  }
+
   async findOne(id_servidor: number): Promise<ServidorPublico> {
     return await this.repository.findOneBy({id_servidor});
   }

@@ -29,6 +29,12 @@ export class HistorialEstadoService {
       order: {id_historial: 'ASC'},
     });
   }
+  
+  async count(): Promise<number> {
+    const totalRow: Array<{count: string}> = await this.repository.query(`SELECT COUNT(*)::text as count FROM historial_estados`);
+    const total = totalRow && totalRow[0] ? Number(totalRow[0].count) : 0;
+    return total;
+  }
 
   async findOne(id_historial: number): Promise<HistorialEstado> {
     return await this.repository.findOneBy({id_historial});

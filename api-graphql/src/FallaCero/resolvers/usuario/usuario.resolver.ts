@@ -20,6 +20,11 @@ export class UsuarioResolver {
   ) {
     return this.service.findAllPaginate(page, limit);
   }
+
+  @Query(() => Number, {name: 'usuariosCount'})
+  usuariosCount() {
+    return this.service.count();
+  }
   @Query(() => Usuario, {name: 'login', nullable: true})
   login(@Args('input') input: UpdateUsuarioInput) {
     return this.service.login(input);

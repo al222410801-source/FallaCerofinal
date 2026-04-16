@@ -21,6 +21,11 @@ export class ServidorPublicoResolver {
     return this.service.findAllPaginate(page, limit);
   }
 
+  @Query(() => Number, {name: 'servidoresPublicosCount'})
+  servidoresPublicosCount() {
+    return this.service.count();
+  }
+
   @Query(() => ServidorPublico, {name: 'servidorPublico'})
   findOne(@Args('id', {type: () => Int}) id: number) {
     return this.service.findOne(id);

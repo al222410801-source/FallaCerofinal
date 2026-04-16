@@ -31,6 +31,12 @@ export class CiudadanoService {
     });
   }
 
+  async count(): Promise<number> {
+    const totalRow: Array<{count: string}> = await this.repository.query(`SELECT COUNT(*)::text as count FROM ciudadanos`);
+    const total = totalRow && totalRow[0] ? Number(totalRow[0].count) : 0;
+    return total;
+  }
+
   async findOne(id_ciudadano: number): Promise<Ciudadano> {
     return await this.repository.findOneBy({id_ciudadano});
   }
